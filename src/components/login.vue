@@ -22,7 +22,8 @@ export default {
         'http://www.17sucai.com/preview/120111/2014-07-10/1402393818279_zcool.com_.cn_/assets/img/1.jpg',
         'http://www.17sucai.com/preview/120111/2014-07-10/1402393818279_zcool.com_.cn_/assets/img/2.jpg',
         'http://www.17sucai.com/preview/120111/2014-07-10/1402393818279_zcool.com_.cn_/assets/img/3.jpg'
-      ]
+      ],
+      timer: null
     }
   },
   methods: {
@@ -32,8 +33,11 @@ export default {
       LoginBack.style.background = `#ccc url(${this.imgSrc[_i]})`
     }
   },
+  destroyed () {
+    clearInterval(this.timer)
+  },
   mounted () {
-    setInterval(() => { this.changeBack() }, 15000)
+    this.timer = setInterval(() => { this.changeBack() }, 15000)
   }
 }
 </script>
@@ -56,6 +60,22 @@ export default {
       margin-top: -220px;
       input,button{
         width: 100% !important;
+      }
+      input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{
+        /* WebKit browsers */
+        color: #fff;
+        }
+        input:-moz-placeholder, textarea:-moz-placeholder{
+        /* Mozilla Firefox 4 to 18 */
+        color: #fff;
+        }
+        input::-moz-placeholder, textarea::-moz-placeholder{
+        /* Mozilla Firefox 19+ */
+        color: #fff;
+        }
+        input:-ms-input-placeholder, textarea:-ms-input-placeholder{
+        /* Internet Explorer 10+ */
+        color: #fff;
       }
       input{
         width: 270px;
