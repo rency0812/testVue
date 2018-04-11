@@ -1,5 +1,5 @@
 
-// import HelloWorld from '@/components/HelloWorld'
+import LoginView from '@/components/login'
 import DashIndex from '@/components/Dash'
 
 import IndexView from '@/components/views/index'
@@ -9,6 +9,11 @@ import Tasks from '@/components/views/tasks'
 import Info from '@/components/views/side'
 
 const routes = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginView
+  },
   {
     path: '/',
     name: 'landIndex',
