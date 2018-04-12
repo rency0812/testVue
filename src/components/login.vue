@@ -6,9 +6,15 @@
         <input type="text" name="username" class="username" placeholder="请输入您的用户名！">
         <input type="password" name="password" class="password" placeholder="请输入您的用户密码！">
         <!-- <input type="Captcha" class="Captcha" name="Captcha" placeholder="请输入验证码！"> -->
-        <button type="button" class="submit_button">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+        <button @click="login" type="button" class="submit_button">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
         <div class="error"><span></span></div>
       </form>
+    </div>
+    <div class="skill-wrap">
+      <ul class="skill-box">
+        <li v-for="v in oTxt" :key="v.id" :style="{background:v.color}">{{v.name}}</li>
+      </ul>
+      <P>技术栈</P>
     </div>
   </div>
 </template>
@@ -23,6 +29,15 @@ export default {
         'http://www.17sucai.com/preview/120111/2014-07-10/1402393818279_zcool.com_.cn_/assets/img/2.jpg',
         'http://www.17sucai.com/preview/120111/2014-07-10/1402393818279_zcool.com_.cn_/assets/img/3.jpg'
       ],
+      oTxt: [
+        {name: 'vue', color: 'rgba(121,100,102,0.8)'}, {name: 'vRouter', color: 'rgba(121,100,102,0.8)'},
+        {name: 'iview', color: 'rgba(121,100,102,0.8)'},
+        {name: 'sass', color: 'rgba(121,100,102,0.8)'},
+        {name: 'git', color: 'rgba(121,100,102,0.8)'},
+        {name: 'webpack', color: 'rgba(121,100,102,0.8)'},
+        {name: 'ES6', color: 'rgba(121,100,102,0.8)'},
+        {name: 'vuex', color: 'rgba(121,100,102,0.8)'}
+      ],
       timer: null
     }
   },
@@ -31,6 +46,14 @@ export default {
       let _i = Math.floor(Math.random() * this.imgSrc.length)
       let LoginBack = document.getElementById('login_back')
       LoginBack.style.background = `#ccc url(${this.imgSrc[_i]})`
+    },
+    login () {
+      // this.$store.state.token = 123456
+      // this.$store.commit({
+      //   type: 'SET_TOKEN',
+      //   token: 123456789
+      // })
+      this.$store.commit('SET_TOKEN', 147369258)
     }
   },
   destroyed () {
@@ -38,6 +61,7 @@ export default {
   },
   mounted () {
     this.timer = setInterval(() => { this.changeBack() }, 15000)
+    console.log(this.$store.state.token)
   }
 }
 </script>
@@ -53,7 +77,7 @@ export default {
     .login-main{
       position: absolute;
       top: 50%;
-      left: 50%;
+      left: 66%;
       width: 350px;
       height: 320px;
       margin-left: -175px;
@@ -133,6 +157,107 @@ export default {
       font-size: 30px;
       font-weight: 700;
       text-shadow: 0 1px 4px rgba(0,0,0,.2);
+    }
+    .skill-wrap{
+      position: absolute;
+      top: 16%;
+      left: 10%;
+      width: 300px;
+      height: 300px;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 300px;
+      p{
+        position: absolute;
+        top: 46px;
+        left: 50%;
+      }
+    }
+    .skill-box{
+      position: absolute;
+      top: 16%;
+      left: 10%;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 4px dotted #fff;
+      animation: Drotate 16s linear infinite;
+      -webkit-animation: Drotate 16s linear infinite;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 300px;
+      li{
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: 700;
+        text-shadow: 1px 1px 1px #ccc;
+        text-align: center;
+        line-height: 80px;
+        list-style: none;
+        animation: Drotates 16s linear infinite;
+        -webkit-animation: Drotates 16s linear infinite;
+        &:nth-child(1){
+          top: -40px;
+          left: 50%;
+          margin-left: -40px;
+        }
+        &:nth-child(2){
+          top: 50%;
+          right: -40px;
+          margin-top: -40px;
+        }
+        &:nth-child(3){
+          bottom: -40px;
+          left: 50%;
+          margin-left: -40px;
+        }
+        &:nth-child(4){
+          left: -40px;
+          top: 50%;
+          margin-top:-40px;
+        }
+        &:nth-child(5){
+          top: 0;
+          left: 0;
+        }
+        &:nth-child(6){
+          top: 0;
+          right: 0;
+        }
+        &:nth-child(7){
+          bottom: 0;
+          left: 0;
+        }
+        &:nth-child(8){
+          bottom: 0;
+          right: 0;
+        }
+        &:nth-child(9){
+          top: 50%;
+          right: 50%;
+        }
+      }
+    }
+  }
+  @keyframes Drotate {
+    from{
+      transform: rotateZ(0deg);
+    }
+    to{
+      transform: rotateZ(360deg);
+    }
+  }
+  @keyframes Drotates {
+    from{
+      transform: rotateZ(360deg);
+    }
+    to{
+      transform: rotateZ(0deg);
     }
   }
 </style>
