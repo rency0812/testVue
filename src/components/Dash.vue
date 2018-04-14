@@ -65,7 +65,7 @@
         </router-link>
       </li>
       <li class="pageLink" v-on:click="toggleMenu">
-        <router-link to="/server"><i class="fa fa-hdd-o"></i>
+        <router-link to="/service"><i class="fa fa-hdd-o"></i>
           <span class="page">服务</span>
         </router-link>
       </li>

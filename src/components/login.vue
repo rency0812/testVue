@@ -54,6 +54,7 @@ export default {
       //   token: 123456789
       // })
       this.$store.commit('SET_TOKEN', 147369258)
+      this.$router.push('/index')
     }
   },
   destroyed () {

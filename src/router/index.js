@@ -7,6 +7,7 @@ import Leaflet from '@/components/views/leaflet'
 import Tables from '@/components/views/table'
 import Tasks from '@/components/views/tasks'
 import Info from '@/components/views/side'
+import Service from '@/components/views/service'
 
 const routes = [
   {
@@ -50,6 +51,12 @@ const routes = [
         name: 'Tasks',
         component: Tasks,
         meta: {description: 'a task list'}
+      },
+      {
+        path: 'service',
+        name: 'Service',
+        component: Service,
+        meta: {description: 'heat MIT proJect'}
       }
     ]
   }
