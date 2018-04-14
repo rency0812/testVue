@@ -25,7 +25,7 @@
                 <a v-bind:href="repo.owner.html_url" target="_blank">
                   <button type="button" class="btn btn-default btn-lg">Visit</button>
                 </a>
-              </div>    
+              </div>
             </i-col>
             <i-col span="8">
               <div class="description-block">
@@ -127,5 +127,4 @@ export default {
       height: 70px;
     }
   }
-  
 </style>
