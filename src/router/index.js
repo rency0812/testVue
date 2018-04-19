@@ -8,6 +8,7 @@ import Tables from '@/components/views/table'
 import Tasks from '@/components/views/tasks'
 import Info from '@/components/views/side'
 import Service from '@/components/views/service'
+import useAxios from '@/components/views/axios'
 
 const routes = [
   {
@@ -57,6 +58,12 @@ const routes = [
         name: 'Service',
         component: Service,
         meta: {description: 'heat MIT proJect'}
+      },
+      {
+        path: 'axios',
+        name: 'axios@$',
+        component: useAxios,
+        meta: {}
       }
     ]
   }

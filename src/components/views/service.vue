@@ -38,6 +38,7 @@
       </i-col>
     </Row>
     <div class="footer"></div>
+    <Spin size="large" fix v-show="isShow">加载中...</Spin>
   </div>
 </template>
 <script>
@@ -49,7 +50,8 @@ export default {
     return {
       githubUrl: 'https://api.github.com/search/repositories?q=language%3Ajavascript&sort=stars',
       response: null,
-      error: null
+      error: null,
+      isShow: true
     }
   },
   methods: {
@@ -64,6 +66,7 @@ export default {
           }
 
           this.response = response.data.items
+          this.isShow = false
         })
         .catch(error => {
           // Request failed.
@@ -83,7 +86,7 @@ export default {
   .service{
     overflow-x: hidden;
     overflow-y: auto;
-    max-height: 100vh;
+    max-height: calc(100vh - 50px);
     h1,h3{
       color: #666;
     }
@@ -115,7 +118,7 @@ export default {
         top: 65px;
         left: 50%;
         margin-left: -45px;
-        z-index: 10;
+        z-index: 5;
         img{
           width: 90px;
           height: 90px;

@@ -70,9 +70,9 @@
         </router-link>
       </li>
       <li class="pageLink" v-on:click="toggleMenu">
-        <router-link to="/repos"><i class="fa fa-heart"></i>
+        <router-link to="/axios"><i class="fa fa-heart"></i>
           <span class="page">什么鬼</span>
-          <small class="label pull-right bg-green">AJAX</small>
+          <small class="label pull-right bg-green">axios</small>
         </router-link>
       </li>
 
