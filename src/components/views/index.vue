@@ -30,6 +30,7 @@
 
 <script>
 import Chart from 'chart.js'
+// import ES from '../../test/ES'
 
 export default {
   data () {
