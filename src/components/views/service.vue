@@ -73,9 +73,15 @@ export default {
           console.log('error', error.response)
           this.error = error.response.statusText
         })
+    },
+    callPost () {
+      axios.post('/vehicleinternet/login', {loginName: 'chengzhao', password: '123456'}).then(response => {
+        console.log(response)
+      })
     }
   },
   mounted () {
+    this.callPost()
     this.callGitHub()
     console.log(this)
   }

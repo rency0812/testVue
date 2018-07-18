@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <iframe src="http://180.101.253.139:30008/login.html" width="100%" height="100%"></iframe>
+    <iframe src="http://180.101.253.139:30008/login.html" width="100%" height="100%" border="0"></iframe>
   </div>
 </template>
 
@@ -32,9 +32,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 .hello{
   height: 100%;
+  overflow: hidden;
+  iframe{
+    border: none;
+  }
 }
 h1, h2 {
   font-weight: normal;

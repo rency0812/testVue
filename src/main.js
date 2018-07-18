@@ -22,6 +22,7 @@ Vue.use(VueRouter)
 Vue.use(iView)
 
 const router = new VueRouter({
+  mode: 'history',
   routes: routes
 })
 

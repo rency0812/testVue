@@ -64,6 +64,10 @@ const routes = [
         name: 'axios@$',
         component: useAxios,
         meta: {}
+      },
+      {
+        path: '*',
+        redirect: '/'
       }
     ]
   }
