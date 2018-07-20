@@ -11,7 +11,7 @@
     </div>
     <table border="1">
       <tr><th>已删除的内容</th><th>是否完成</th></tr>
-      <tr :key="v.id" v-for="(v) in delList"><th>{{v.content}}</th><th>{{v.finished?'已完成':'未完成'}}</th>
+      <tr :key="v.id" v-for="v in delList"><th>{{v.content}}</th><th>{{v.finished?'已完成':'未完成'}}</th>
       <!-- <th><button @click="reply(i)" :class="{ 'none':v.finished}">{{v.finished?'':'恢复'}}</button></th> -->
       </tr>
     </table>

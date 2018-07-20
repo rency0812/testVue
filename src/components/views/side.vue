@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <iframe src="http://180.101.253.139:30008/login.html" width="100%" height="100%" border="0"></iframe>
+    <iframe src="http://119.23.71.104:4711/WTMelec/index.html" width="100%" height="100%" border="0"></iframe>
   </div>
 </template>
 
