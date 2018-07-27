@@ -3,25 +3,28 @@
     <Row class="iview-row">
       <i-col :span="11">
         <div class="grid-content">
-          <h2>饼图</h2>
-          <canvas id="pie">
-          </canvas>
+          <h2>柱图</h2>
+          <div ref="bar" :style="{height: '300px'}"></div>
         </div>
       </i-col>
       <i-col :span="11">
         <div class="grid-content">
           <h2>曲线图</h2>
-          <canvas id="bight">
-          </canvas>
+          <div ref="line" :style="{height: '300px'}"></div>
         </div>
       </i-col>
     </Row>
-    <Row class="iview-row" justify="center">
-      <i-col :offset="6" :span="12">
+    <Row class="iview-row padding-top" justify="center">
+      <i-col :span="11">
         <div class="grid-content">
-          <h2>
-            <canvas id="pillar"></canvas>
-          </h2>
+          <h2>饼图</h2>
+          <div ref="pie" :style="{height: '300px'}"></div>
+        </div>
+      </i-col>
+      <i-col :span="11">
+        <div class="grid-content">
+          <h2>环形图</h2>
+          <div ref="hoop" :style="{height: '300px'}"></div>
         </div>
       </i-col>
     </Row>
@@ -29,137 +32,237 @@
 </template>
 
 <script>
-import Chart from 'chart.js'
+// let echarts = require('echarts')
 // import ES from '../../test/ES'
 
 export default {
   data () {
     return {
-      randomNum (num, max, min) {
-        var arr = []
-        for (var i = 0; i < num; i++) {
-          arr.push(Math.floor(Math.random() * (max - min + 1)) + max)
-        }
-        return arr
-      }
     }
   },
   computed: {
-    webNum () {
-      return this.randomNum(12, 100000, 1000)
-    },
-    personNum () {
-      return this.randomNum(12, 100000, 1000)
-    },
-    isMobile () {
-      return (window.innerWidth <= 800 && window.innerHeight <= 600)
-    }
-  },
-  methods: {
   },
   mounted () {
     this.$nextTick(() => {
-      var Pie = document.getElementById('pie').getContext('2d')
-      var pieConfig = {
-        type: 'pie',
-        data: {
-          labels: ['HTML', 'JavaScript', 'CSS'],
-          datasets: [{
-            data: [56.6, 37.7, 4.1],
-            backgroundColor: ['#00a65a', '#f39c12', '#00c0ef'],
-            hoverBackgroundColor: ['#00a65a', '#f39c12', '#00c0ef']
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: !this.isMobile,
-          legend: {
-            position: 'bottom',
-            display: true
-          }
-        }
-      }
-      new Chart(Pie, pieConfig) // eslint-disable-line no-new
-
-      // qu xian tu
-      var Bight = document.getElementById('bight').getContext('2d')
-      var bightConfig = {
-        type: 'line',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-          datasets: [{
-            label: 'rency',
-            fill: false,
-            borderColor: '#284184',
-            pointBackgroundColor: '#284184',
-            backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: this.webNum
-          }, {
-            label: 'personNum',
-            borderColor: '#4BC0C0',
-            pointBackgroundColor: '#4BC0C0',
-            backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: this.personNum
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: !this.isMobile,
-          legend: {
-            position: 'bottom',
-            display: true
-          },
-          tooltips: {
-            mode: 'label',
-            xPadding: 10,
-            yPadding: 10,
-            bodySpacing: 10
-          }
-        }
-      }
-      new Chart(Bight, bightConfig) // eslint-disable-line no-new
-
-      // 柱状图
-      var Pillar = document.getElementById('pillar').getContext('2d')
-      var PillarConfig = {
-        type: 'bar',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [
-            {
-              label: 'gray',
-              backgroundColor: '#4Bc0c0',
-              borderColor: '#4BC0C0',
-              fillColor: '#4BC0C0',
-              strokeColor: '#4BC0C0',
-              data: [65, 59, 90, 81, 56, 55, 40]
-            },
-            {
-              label: 'green',
-              backgroundColor: '#284184',
-              borderColor: '#284184',
-              fillColor: '#284184',
-              strokeColor: '#284184',
-              data: [28, 48, 40, 19, 96, 27, 100]
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: !this.isMobile,
-          legend: {
-            position: 'bottom',
-            display: true
-          }
-        }
-      }
-      new Chart(Pillar, PillarConfig) // eslint-disable-line no-new
+      this.drawBar()
+      this.drawLine()
+      this.drawPie()
+      this.drawPie2()
     })
+  },
+  methods: {
+    drawBar () {
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = this.$echarts.init(this.$refs.bar)
+      myChart.setOption({
+        title: {text: 'echarts羊毛衫', left: '10%'},
+        tooltip: {},
+        xAxis: {
+          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [{
+          name: '销量',
+          type: 'bar',
+          data: [5, 20, 36, 10, 10, 20]
+        }]
+      })
+    },
+    drawLine () {
+      this.oLine = this.$echarts.init(this.$refs.line)
+      let option = {
+        title: {
+          text: '食品生产情况',
+          subtext: '每年企业新办/注销许可证趋势',
+          left: '10%'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        grid: {
+          left: '3%',
+          top: '25%',
+          containLabel: true
+        },
+        legend: {
+          right: '10%',
+          data: ['新办数', '注销数']
+        },
+        calculable: true,
+        xAxis: [
+          {
+            type: 'category',
+            boundaryGap: false,
+            data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+          }
+        ],
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            name: '新办数',
+            type: 'line',
+            areaStyle: {
+              normal: {type: 'default',
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(199, 37, 50,0.2)'
+                }, {
+                  offset: 1,
+                  color: 'rgba(199, 37, 50,0.2)'
+                }], false)
+              }
+            },
+            smooth: true,
+            itemStyle: {
+              normal: {areaStyle: {type: 'default'}}
+            },
+            data: [136, 375, 380, 449, 114, 267, 142, 318, 357, 193, 421, 391]
+          },
+          {
+            name: '注销数',
+            type: 'line',
+            areaStyle: {
+              normal: {type: 'default',
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(19, 37, 250, 0.2)'
+                }, {
+                  offset: 1,
+                  color: 'rgba(19, 37, 250, 0.2)'
+                }], false)
+              }
+            },
+            smooth: true,
+            itemStyle: {normal: {areaStyle: {type: 'default'}}},
+            data: [610, 312, 221, 654, 910, 630, 310, 521, 354, 560, 830, 310]
+          }
+        ]
+      }
+      this.oLine.setOption(option, true)
+    },
+    drawPie () {
+      this.pieId = this.$echarts.init(this.$refs.pie)
+      let option1 = {
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        series: [{
+          name: '库存情况',
+          type: 'pie',
+          radius: '68%',
+          center: ['50%', '50%'],
+          clockwise: false,
+          data: [{
+            value: 45,
+            name: 'CARD'
+          }, {
+            value: 25,
+            name: 'SSD'
+          }, {
+            value: 15,
+            name: 'U盘'
+          }, {
+            value: 8,
+            name: '嵌入式'
+          }, {
+            value: 7,
+            name: 'FLASH'
+          }],
+          label: {
+            normal: {
+              textStyle: {
+                color: '#999',
+                fontSize: 14
+              }
+            }
+          },
+          labelLine: {
+            normal: {
+              show: false
+            }
+          },
+          itemStyle: {
+            normal: {
+              borderWidth: 4,
+              borderColor: '#ffffff'
+            },
+            emphasis: {
+              borderWidth: 0,
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }],
+        color: [
+          '#00acee',
+          '#52cdd5',
+          '#79d9f1',
+          '#a7e7ff',
+          '#c8efff'
+        ],
+        backgroundColor: '#fff'
+      }
+      this.pieId.setOption(option1, true)
+    },
+    drawPie2 () {
+      this.pieId2 = this.$echarts.init(this.$refs.hoop)
+      let option2 = {
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        legend: {
+          orient: 'vertical',
+          x: 'right',
+          data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+        },
+        series: [
+          {
+            name: '访问来源',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+              normal: {
+                show: false,
+                position: 'center'
+              },
+              emphasis: {
+                show: true,
+                textStyle: {
+                  fontSize: '30',
+                  fontWeight: 'bold'
+                }
+              }
+            },
+            labelLine: {
+              normal: {
+                show: false
+              }
+            },
+            data: [{value: 335, name: '直接访问'},
+              {value: 310, name: '邮件营销'},
+              {value: 234, name: '联盟广告'},
+              {value: 135, name: '视频广告'},
+              {value: 1548, name: '搜索引擎'}
+            ]
+          }
+        ]
+      }
+      this.pieId2.setOption(option2, true)
+    }
   }
 }
 </script>
 <style lang='scss' scoped>
 .index-wrap{
+  .padding-top{
+    padding-top: 52px;
+  }
   h2{
     text-align: center;
   }

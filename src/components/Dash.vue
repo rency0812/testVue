@@ -31,33 +31,6 @@
           <span class="page">信息</span>
         </router-link>
       </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-folder-o"></i>
-          <span>文件</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left fa-fw pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li>
-            <a href="#">
-              <i class="fa fa-file-word-o"></i> 项目 1
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-file-picture-o"></i> 项目 2
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-file-pdf-o"></i> 项目 3
-            </a>
-          </li>
-        </ul>
-      </li>
-
       <li class="header">日志</li>
       <li class="pageLink" v-on:click="toggleMenu">
         <router-link to="/leaflet"><i class="fa fa-book"></i>
@@ -96,37 +69,31 @@
 </template>
 
 <script>
-import faker from 'faker'
 
 export default {
   name: 'dash',
-  computed: {
-    tData () {
-      return {
-        displayName: faker.name.findName(),
-        avatar: faker.image.avatar(),
-        email: faker.internet.email(),
-        randomCard: faker.helpers.createCard()
+  data () {
+    return {
+      tData: {
+        displayName: 'rency',
+        avatar: '../../static/img/5.png'
       }
     }
   },
   methods: {
-    toggleMenu (event) {
-      // remove active from li
-      var active = document.querySelector('li.pageLink.active')
-
-      if (active) {
-        active.classList.remove('active')
-      }
-      // window.$('li.pageLink.active').removeClass('active')
-      // Add it to the item that was clicked
-      event.toElement.parentElement.className = 'pageLink active'
+    toggleMenu (e) {
+      console.log(e)
+      // let $elem = e.srcElement || e.target
+      // $elem.style.background = 'rgba(45, 140, 240, 0.2)'
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.pageLink:hover{
+  background: rgba(45,140,240,.2);
+}
 .dash {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

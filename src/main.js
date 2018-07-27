@@ -9,7 +9,8 @@ import routes from './router'
 
 // for iview ui
 import iView from 'iview'
-import 'iview/dist/styles/iview.css'
+// echarts
+import echarts from 'echarts'
 
 // for vuex
 import state from './store/state'
@@ -20,6 +21,8 @@ Vue.config.productionTip = false
 Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(iView)
+
+Vue.prototype.$echarts = echarts
 
 const router = new VueRouter({
   mode: 'history',
