@@ -141,7 +141,9 @@ export default {
   .content-wrap{
     margin-left: 230px;
     height: calc( 100vh - 50px );
-    background: #fff
+    background: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }
 </style>

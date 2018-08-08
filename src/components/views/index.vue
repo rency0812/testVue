@@ -218,6 +218,7 @@ export default {
         legend: {
           orient: 'vertical',
           x: 'right',
+          right: '30%',
           data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
         },
         series: [
