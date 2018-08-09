@@ -1,6 +1,6 @@
 <template>
   <div class="index-wrap">
-    <Row class="iview-row">
+    <Row class="iview-row padding-top">
       <i-col :span="11">
         <div class="grid-content">
           <h2>柱图</h2>
