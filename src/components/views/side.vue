@@ -26,7 +26,7 @@ export default {
   },
   mounted () {
     api.test()
-    api.test1()
+    // api.test1()
   }
 }
 </script>

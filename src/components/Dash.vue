@@ -160,7 +160,7 @@
       </li>
       <li class="pageLink" v-on:click="toggleMenu">
         <router-link to="/axios"><i class="fa fa-heart"></i>
-          <span class="page">什么鬼</span>
+          <span class="page">更好的</span>
           <small class="label pull-right bg-green">axios</small>
         </router-link>
       </li>

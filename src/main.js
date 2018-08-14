@@ -4,7 +4,7 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
-import App from './components/App'
+import App from './components/App.vue'
 import routes from './router'
 
 // for iview ui
@@ -32,6 +32,19 @@ const router = new VueRouter({
 const store = new Vuex.Store({
   state,
   mutations
+})
+
+router.beforeEach((to, from, next) => {
+  if (store.state.token === null) {
+    if (to.path === '/login') {
+      next()
+    } else {
+      // TODO Request Token
+      next({ path: '/login' })
+    }
+  } else {
+    next()
+  }
 })
 
 /* eslint-disable no-new */

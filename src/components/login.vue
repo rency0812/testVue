@@ -3,11 +3,12 @@
     <div class="login-main">
       <h1>登录(Login)</h1>
       <form action="" method="">
-        <input type="text" name="username" class="username" placeholder="请输入您的用户名！">
-        <input type="password" name="password" class="password" placeholder="请输入您的用户密码！">
+        <input type="text" name="username" v-model="userLogin.userName" class="username" placeholder="请输入您的用户名！">
+        <input type="password" name="password" v-model="userLogin.pwd" class="password" placeholder="请输入您的用户密码！">
         <!-- <input type="Captcha" class="Captcha" name="Captcha" placeholder="请输入验证码！"> -->
         <button @click="login" type="button" class="submit_button">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
         <div class="error"><span></span></div>
+        <div :style="{color: '#ccc'}"><span>随便输入即可</span></div>
       </form>
     </div>
     <div class="skill-wrap">
@@ -38,7 +39,11 @@ export default {
         {name: 'ES6', color: 'rgba(121,100,102,0.8)'},
         {name: 'vuex', color: 'rgba(121,100,102,0.8)'}
       ],
-      timer: null
+      timer: null,
+      userLogin: {
+        userName: '',
+        pwd: ''
+      }
     }
   },
   methods: {
@@ -53,6 +58,10 @@ export default {
       //   type: 'SET_TOKEN',
       //   token: 123456789
       // })
+      if (!this.userLogin.userName || !this.userLogin.pwd) {
+        this.$Message.warning('请输入用户名密码！')
+        return
+      }
       this.$store.commit('SET_TOKEN', 147369258)
       this.$router.push('/index')
     }
