@@ -9,6 +9,8 @@ import Tasks from '@/components/views/tasks'
 import Info from '@/components/views/side'
 import Service from '@/components/views/service'
 import useAxios from '@/components/views/axios'
+import moment from '@/components/views/moment'
+import wEditor from '@/components/views/editor'
 
 const routes = [
   {
@@ -61,8 +63,20 @@ const routes = [
       },
       {
         path: 'axios',
-        name: 'axios@$',
+        name: 'axios',
         component: useAxios,
+        meta: {}
+      },
+      {
+        path: 'moment',
+        name: 'moment',
+        component: moment,
+        meta: {}
+      },
+      {
+        path: 'editor',
+        name: 'editor',
+        component: wEditor,
         meta: {}
       },
       {

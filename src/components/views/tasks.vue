@@ -139,7 +139,7 @@ export default {
     }
     .task-list{
       margin:0 auto;
-      width: 300px;
+      width: auto;
       .list-box{
         position: relative;
         padding: 8px 0;

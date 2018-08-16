@@ -122,7 +122,7 @@
         <span><img :src="tData.avatar"/></span>
         <span>{{tData.displayName}}</span>
       </li> -->
-      <li class="header">工具</li>
+      <li class="header"></li>
       <li class="active pageLink" v-on:click="toggleMenu">
         <router-link to="/"><i class="fa fa-desktop"></i>
           <span class="page">首页</span>
@@ -147,7 +147,7 @@
           <span class="page">信息</span>
         </router-link>
       </li>
-      <li class="header">日志</li>
+      <li class="header">工具</li>
       <li class="pageLink" v-on:click="toggleMenu">
         <router-link to="/leaflet"><i class="fa fa-book"></i>
           <span class="page">Leaflet地图</span>
@@ -162,6 +162,18 @@
         <router-link to="/axios"><i class="fa fa-heart"></i>
           <span class="page">更好的</span>
           <small class="label pull-right bg-green">axios</small>
+        </router-link>
+      </li>
+      <li class="pageLink" v-on:click="toggleMenu">
+        <router-link to="/moment"><i class="fa fa-heart"></i>
+          <span class="page">时间格式化</span>
+          <small class="label pull-right bg-green">moment</small>
+        </router-link>
+      </li>
+      <li class="pageLink" v-on:click="toggleMenu">
+        <router-link to="/editor"><i class="fa fa-heart"></i>
+          <span class="page">富文本</span>
+          <small class="label pull-right bg-green">editor</small>
         </router-link>
       </li>
 
