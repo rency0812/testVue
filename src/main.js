@@ -35,7 +35,7 @@ const store = new Vuex.Store({
 })
 
 router.beforeEach((to, from, next) => {
-  if (store.state.token === null) {
+  if (!store.state.token && !sessionStorage.getItem('state')) {
     if (to.path === '/login') {
       next()
     } else {

@@ -63,6 +63,7 @@ export default {
         return
       }
       this.$store.commit('SET_TOKEN', 147369258)
+      sessionStorage.setItem('state', true)
       this.$router.push('/index')
     }
   },

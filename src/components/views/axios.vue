@@ -41,21 +41,25 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '../../interceptor'
 
 export default {
   name: 'axios',
   data () {
     return {
       url: 'https://easy-mock.com/mock/5afbf5ddc910be77a053fb13/example/api',
+      url1: 'http://route.showapi.com/341-3',
       oData: null,
-      oData1: null
+      oData1: null,
+      param: {
+        showapi_appid: '40397',
+        showapi_sign: '219cb59d05734b2fbba935aef88cdb99'
+      }
     }
   },
   methods: {
     callData () {
       axios.get(this.url).then(res => {
-        console.log(res)
         this.oData = res.data.data
       })
       axios.get(this.url).then(res => {
@@ -65,6 +69,11 @@ export default {
     timer () {
       clearInterval(this.timer)
       this.timer = setInterval(this.callData, 10000)
+    },
+    getJoke () {
+      axios.post(this.url1, this.param).then(res => {
+        console.log(res)
+      })
     }
   },
   destroyed () {
@@ -73,6 +82,7 @@ export default {
   mounted () {
     this.callData()
     this.timer()
+    this.getJoke()
   }
 }
 </script>

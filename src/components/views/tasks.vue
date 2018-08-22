@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import axios from '../../interceptor'
+
 export default {
   data () {
     return {
@@ -37,6 +39,13 @@ export default {
     }
   },
   methods: {
+    callPost () {
+      axios.post('/vehicleinternet/login', {loginName: 'chengzhao', password: window.btoa('123456')}).then(response => {
+        console.log(response.data)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
     reply (i) {
       this.delList.splice(i, 1)
       this.list.push(this.delList[i])
@@ -105,6 +114,7 @@ export default {
       if (i === 3) { continue }
       console.log(i)
     }
+    this.callPost()
     // this.delList.forEach((v, i) => {
     //   if (i === 2) { return }
     //   console.log(v)

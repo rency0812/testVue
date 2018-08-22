@@ -61,7 +61,7 @@ export default {
           console.log('GitHub Response:', response)
 
           if (response.status !== 200) {
-            this.error = response.statusText
+            // this.error = response.statusText
             return
           }
 
@@ -71,13 +71,8 @@ export default {
         .catch(error => {
           // Request failed.
           console.log('error', error.response)
-          this.error = error.response.statusText
+          // this.error = error.response.statusText
         })
-    },
-    callPost () {
-      axios.post('/vehicleinternet/login', {loginName: 'chengzhao', password: '123456'}).then(response => {
-        // console.log(response)
-      })
     }
   },
   mounted () {

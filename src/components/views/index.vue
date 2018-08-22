@@ -32,9 +32,6 @@
 </template>
 
 <script>
-// let echarts = require('echarts')
-// import ES from '../../test/ES'
-
 export default {
   data () {
     return {
@@ -43,11 +40,16 @@ export default {
   computed: {
   },
   mounted () {
+    let layui = window.layui
     this.$nextTick(() => {
       this.drawBar()
       this.drawLine()
       this.drawPie()
       this.drawPie2()
+      layui.use('layer', () => {
+        var layer = layui.layer
+        layer.alert('酷毙了', {icon: 1})
+      })
     })
   },
   methods: {
