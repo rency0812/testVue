@@ -2,7 +2,7 @@ import axios from 'axios'
 import router from './router'
 import Qs from 'qs'
 
-axios.defaults.timeout = 1000
+axios.defaults.timeout = 1000 * 30
 axios.defaults.transformRequest = [function (data) {
   data = Qs.stringify(data)
   return data

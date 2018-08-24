@@ -1,5 +1,6 @@
 <template>
   <div class="index-wrap">
+    <div class="rs-round"></div>
     <Row class="iview-row padding-top">
       <i-col :span="11">
         <div class="grid-content">
@@ -263,11 +264,36 @@ export default {
 </script>
 <style lang='scss' scoped>
 .index-wrap{
+  position: relative;
   .padding-top{
     padding-top: 52px;
   }
   h2{
     text-align: center;
   }
+}
+@keyframes roundBall {
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:82%; top:0px;}
+50%  {background:blue; left:82%; top:100%;}
+75%  {background:green; left:0px; top:100%;}
+100% {background:red; left:0px; top:0px;}
+}
+.rs-round{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    z-index: 2;
+    animation:roundBall 8s linear infinite;
+  }
+@-webkit-keyframes roundBall {
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:82%; top:0px;}
+50%  {background:blue; left:82%; top:100%;}
+75%  {background:green; left:0px; top:100%;}
+100% {background:red; left:0px; top:0px;}
 }
 </style>

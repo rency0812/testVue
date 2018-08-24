@@ -214,7 +214,6 @@ export default {
   },
   methods: {
     toggleMenu (e) {
-      console.log(e)
       // let $elem = e.srcElement || e.target
       // $elem.style.background = 'rgba(45, 140, 240, 0.2)'
     },
