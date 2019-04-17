@@ -6,6 +6,9 @@
 
 ``` bash
 first install **nodejs** env，please
+#install sass
+npm install --save-dev sass-loader style-loader css-loader
+npm install --save-dev node-sass
 #install vue-cli
 npm install vue-cli -g
 
