@@ -19,6 +19,9 @@ axios.interceptors.response.use(res => {
       path: '/login'
     })
   }
+  if (res.data.code !== '0') {
+    alert(res.data.msg)
+  }
   return res
 }, error => {
   return Promise.reject(error)
